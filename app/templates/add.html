@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>新增留言</h2>
+<form method="post">
+    <input type="text" name="title" placeholder="标题" required>
+    <textarea name="content" rows="5" placeholder="内容" required></textarea>
+    <button type="submit">提交</button>
+    <a href="{{ url_for('message.index') }}">返回</a>
+</form>
+{% endblock %}

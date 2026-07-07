@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ message.title }}</h2>
+<div class="content">{{ message.content }}</div>
+<div class="meta">
+    作者：{{ message.author.username }} |
+    发布于：{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}
+    {% if message.updated_at != message.created_at %}
+        <br>最后编辑：{{ message.updated_at.strftime('%Y-%m-%d %H:%M') }}
+    {% endif %}
+</div>
+<a href="{{ url_for('message.index') }}">返回留言板</a>
+{% endblock %}

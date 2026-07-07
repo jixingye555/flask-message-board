@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>用户登录</h2>
+<form method="post">
+    <input type="text" name="username" placeholder="用户名" required>
+    <input type="password" name="password" placeholder="密码" required>
+    <button type="submit">登录</button>
+</form>
+<p>测试账号：admin / 123456（首次运行会自动创建）</p>
+{% endblock %}
