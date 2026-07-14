@@ -62,3 +62,26 @@ a {
 a:hover {
     text-decoration: underline;
 }
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+.search-form input {
+    flex: 1;   /* 输入框占满剩余宽度 */
+    width: auto;
+    margin: 0;
+}
+.search-form button {
+    width: auto;
+    padding: 8px 16px;
+    margin: 0;
+}
+.clear-btn {
+    font-size: 14px;
+}
+.search-tip {
+    color: #666;
+    font-size: 14px;
+}

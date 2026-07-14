@@ -2,6 +2,16 @@
 {% block content %}
 <a href="{{ url_for('message.add') }}" class="btn">➕ 新增留言</a>
 
+<!-- 搜索框：method=get 会把输入变成网址里的 ?q=关键词 -->
+<form method="get" action="{{ url_for('message.index') }}" class="search-form">
+    <input type="text" name="q" value="{{ keyword or '' }}" placeholder="搜索标题 / 内容 / 作者">
+    <button type="submit">🔍 搜索</button>
+    {% if keyword %}
+        <a href="{{ url_for('message.index') }}" class="clear-btn">✕ 清除</a>
+        <span class="search-tip">“{{ keyword }}” 的搜索结果</span>
+    {% endif %}
+</form>
+
 {% for msg in messages %}
 <div class="message-item">
     <h3>{{ msg.title }}</h3>
@@ -25,11 +35,11 @@
 <!-- 分页导航 -->
 <div class="pagination">
     {% if pagination.has_prev %}
-        <a href="{{ url_for('message.index', page=pagination.prev_num) }}">上一页</a>
+        <a href="{{ url_for('message.index', page=pagination.prev_num, q=keyword) }}">上一页</a>
     {% endif %}
     <span>第 {{ pagination.page }} / {{ pagination.pages }} 页</span>
     {% if pagination.has_next %}
-        <a href="{{ url_for('message.index', page=pagination.next_num) }}">下一页</a>
+        <a href="{{ url_for('message.index', page=pagination.next_num, q=keyword) }}">下一页</a>
     {% endif %}
 </div>
 {% endblock %}
